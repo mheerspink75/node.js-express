@@ -1,8 +1,8 @@
 {
   "name": "sample-node",
   "version": "1.0.0",
-  "description": "Node.js server project",
-  "main": "server.js",
+  "description": "Node.js-express server project",
+  "main": "express_server.js",
   "scripts": {
     "test": "echo \"Error: not test specified\" && exit 1"
   },
