@@ -19,4 +19,6 @@ node express_server.js
 
 http://127.0.0.1:3000/
 
+npm install --save body-parser
+
 ```

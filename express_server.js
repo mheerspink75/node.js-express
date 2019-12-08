@@ -1,3 +1,12 @@
+// imports
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+
+//mounts BodyParser as middleware - every request passes through it
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+
 var quotes = [
     {
         id: 1,
@@ -19,35 +28,32 @@ var quotes = [
     }
 ];
 
+// ROUTES
 
-var express = require('express');
-var app = express();
-var port = 3000;
-
-
-app.get(`/`, function (request, response) {
-    response.send('Hello, World!');
+app.get('/', function(req, res) {
+    res.send("Get request received at '/' ");
 });
 
-
-app.get('/quotes', function (req, res) {
-    console.log("Get a list of all quotes as json");
-    if (req.query.year) {
+app.get('/quotes', function(req, res){
+    if(req.query.year){
         res.send("Return a list of quotes from the year: " + req.query.year);
     }
-    else {
+    else{
         res.json(quotes);
     }
 });
 
-
-app.get('/quotes/:id', function(req, res){
+ app.get('/quotes/:id', function(req, res){
     console.log("return quote with the ID: " + req.params.id);
     res.send("Return quote with the ID: " + req.params.id);
 });
 
+app.post('/quotes', function(req, res){
+    console.log("Insert a new quote: " + req.body.quote);
+    res.json(req.body);
+});
 
-app.listen(port, function () {
-    console.log('Express app listening on port ' + port);
+app.listen(3000, function(){
+    console.log('Listening on Port 3000');
 });
 
