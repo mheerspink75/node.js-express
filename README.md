@@ -23,4 +23,6 @@ npm install --save body-parser
 
 Postman API
 
+npm install sqlite3 --save
+
 ```
